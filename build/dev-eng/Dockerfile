@@ -11,7 +11,7 @@ RUN git clone -b Eng-ToughRadius https://github.com/sumonchai/ToughRADIUS.git /o
     ln -s /opt/toughradius/build/dev-eng/supervisord.conf /etc/supervisord.conf && \
     chmod +x /opt/toughradius/radiusctl 
 
-ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD /opt/toughradius/build/dev-eng/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 1816

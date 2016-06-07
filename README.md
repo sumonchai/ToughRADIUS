@@ -1,4 +1,4 @@
-# TOUGHRADIUS ENGLISH VER
+# TOUGHRADIUS
 
 [![Build Status](https://travis-ci.org/talkincode/ToughRADIUS.svg?branch=master)](https://travis-ci.org/talkincode/ToughRADIUS)
 

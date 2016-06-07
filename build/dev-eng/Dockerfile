@@ -9,10 +9,12 @@ RUN pypy -m pip install https://github.com/talkincode/txradius/archive/master.zi
 RUN git clone -b Eng-ToughRadius https://github.com/sumonchai/ToughRADIUS.git /opt/toughradius && \
     ln -s /opt/toughradius/build/dev-eng/toughradius.json /etc/toughradius.json && \
     ln -s /opt/toughradius/build/dev-eng/supervisord.conf /etc/supervisord.conf && \
-    chmod +x /opt/toughradius/radiusctl 
+    chmod +x /opt/toughradius/radiusctl && \
+    ln -s /opt/toughradius/build/dev-eng/entrypoint.sh /usr/local/bin/entrypoint.sh && \
+    chmod +x /usr/local/bin/entrypoint.sh
 
-ADD /opt/toughradius/build/dev-eng/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+#ADD /usr/local/bin/entrypoint.sh
+#RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 1816
 EXPOSE 1812/udp

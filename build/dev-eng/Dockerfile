@@ -7,8 +7,8 @@ RUN pypy -m pip install Click
 RUN pypy -m pip install https://github.com/talkincode/toughlib/archive/master.zip --upgrade --no-deps
 RUN pypy -m pip install https://github.com/talkincode/txradius/archive/master.zip --upgrade --no-deps
 RUN git clone -b Eng-ToughRadius https://github.com/sumonchai/ToughRADIUS.git /opt/toughradius && \
-    ln -s /opt/toughradius/build/dev/toughradius.json /etc/toughradius.json && \
-    ln -s /opt/toughradius/build/dev/supervisord.conf /etc/supervisord.conf && \
+    ln -s /opt/toughradius/build/dev-eng/toughradius.json /etc/toughradius.json && \
+    ln -s /opt/toughradius/build/dev-eng/supervisord.conf /etc/supervisord.conf && \
     chmod +x /opt/toughradius/radiusctl 
     
 #RUN wget http://qnstatic.toughcloud.net/toughkey_linux64 -O /usr/local/bin/toughkey && \

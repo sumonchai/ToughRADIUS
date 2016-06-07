@@ -18,5 +18,5 @@ EXPOSE 1816
 EXPOSE 1812/udp
 EXPOSE 1813/udp
 
-#ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/usr/local/bin/supervisord","-c","/etc/supervisord.conf"]

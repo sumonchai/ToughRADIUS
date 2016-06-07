@@ -21,7 +21,7 @@ def init_db(db):
     db.add(node)
 
     params = [
-        ('system_name', u'管理系统名称', u'ToughRADIUS管理控制台'),
+        ('system_name', u'管理系统名称', u'ToughRADIUS'),
         ('system_ticket_expire_days', u'上网日志保留天数', '30'),
         ('is_debug', u'DEBUG模式', u'0'),
         ('expire_notify_days', '到期提醒提前天数', u'7'),

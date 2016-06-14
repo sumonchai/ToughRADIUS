@@ -62,7 +62,7 @@ ACCEPT_TYPES = {
 
 # 管理菜单定义
 ADMIN_MENUS = (MenuSys, MenuRes, MenuUser, MenuOpt, MenuStat) = (
-    u"系统管理", u"资源管理", u"用户管理", u"维护管理", u"统计分析")
+    u"ระบบการจัดการ", u"การจัดการทรัพยากร", u"การจัดการผู้ใช้", u"จัดการการบำรุงรักษา", u"การวิเคราะห์ทางสถิติ")
 
 MENU_ICONS = {
     u"系统管理": "fa fa-cog",

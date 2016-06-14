@@ -4,7 +4,7 @@
 <script>
     function deleteBas(bas_id)
     {
-        if(confirm("确认删除吗？"))
+        if(confirm("ยืนยันการลบ?"))
         {
             window.location.href = "/admin/bas/delete?bas_id="+bas_id;
         }
@@ -17,27 +17,27 @@
     <div class="box box-primary">
         <div class="box-header">
             <i class="fa fa-sitemap"></i>
-            <h3 class="box-title">接入设备列表</h3>
+            <h3 class="box-title">รายชื่อของอุปกรณ์</h3>
         </div>
         <div class="box-body">
             <div class="container">
                 % if permit.match(current_user.username,'/admin/bas/add'):
                 <div class="pull-right bottom10">
-                     <a href="/admin/bas/add" class="btn btn-sm btn-info">增加接入设备</a>
+                     <a href="/admin/bas/add" class="btn btn-sm btn-info">เพิ่มอุปกรณ์เชื่อมต่อ</a>
                 </div>
                 % endif
 
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>设备名称</th>
-                            <th>域名</th>
-                            <th>设备IP地址</th>
-                            <th>共享密钥</th>
-                            <th>设备类型</th>
-                            <th>时区</th>
-                            <th>下线端口</th>
-                            <th>操作</th>
+                            <th>ชื่ออุปกรณ์</th>
+                            <th>ชื่อโดเมน</th>
+                            <th>ที่อยู่ IP อุปกรณ์</th>
+                            <th>กุญแจที่ใช้ร่วมกัน</th>
+                            <th>ประเภทอุปกรณ์</th>
+                            <th>โซนเวลา</th>
+                            <th>พอร์ตออฟไลน์</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,14 +48,14 @@
                                 <td>${bas.ip_addr}</td>
                                 <td>${bas.bas_secret}</td>
                                 <td>${bastype.get(str(bas.vendor_id))}</td>
-                                <td>${{0:u"标准时区，北京时间",1:u"时间与时区相同"}[bas.time_type]}</td>
+                                <td>${{0:u"โซนเวลามาตรฐาน，ปักกิ่ง",1:u"เวลาและโซนเวลาเดียวกัน"}[bas.time_type]}</td>
                                 <td>${bas.coa_port}</td>
                                 <td>
                                     % if permit.match(current_user.username,'/admin/bas/update'):
-                                    <a class="opt-btn btn-default" href="/admin/bas/update?bas_id=${bas.id}">修改</a>
+                                    <a class="opt-btn btn-default" href="/admin/bas/update?bas_id=${bas.id}">แก้ไข</a>
                                     % endif
                                     % if permit.match(current_user.username,'/admin/bas/delete'):
-                                    <a class="opt-btn btn-default" href="javascript:deleteBas('${bas.id}')">删除</a>
+                                    <a class="opt-btn btn-default" href="javascript:deleteBas('${bas.id}')">ลบ</a>
                                     % endif
                                 </td>
                             </tr>

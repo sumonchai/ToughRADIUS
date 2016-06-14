@@ -17,23 +17,23 @@
     <div class="box box-primary">
         <div class="box-header">
             <i class="fa fa-users"></i>
-            <h3 class="box-title">操作员信息列表</h3>
+            <h3 class="box-title">รายชื่อผู้ประกอบการ</h3>
         </div>
         <div class="box-body">
             <div class="container">
                 % if current_user.opr_type == 0:
                 <div class="pull-right bottom10">
-                     <a href="/admin/operator/add" class="btn btn-sm btn-info">增加操作员信息</a>
+                     <a href="/admin/operator/add" class="btn btn-sm btn-info">เพิ่มข้อมูลผู้ประกอบการ</a>
                 </div>
                 % endif
 
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>操作员名称</th>
+                            <th>ชื่อผู้ประกอบการ</th>
                             <th>操作员姓名</th>
-                            <th>操作员状态</th>
-                            <th>操作</th>
+                            <th>สถานะผู้ประกอบการ</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

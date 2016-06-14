@@ -6,7 +6,7 @@
 <script>
     $(function () {
         $('#file_upload').uploadify({
-            'buttonText': '上传数据文件',
+            'buttonText': 'อัปโหลดไฟล์ข้อมูล',
             'formData': {'_xsrf': '${handler.xsrf_token}'},
             'fileSizeLimit': '200MB',
             'fileTypeExts': '*.gz',
@@ -59,19 +59,19 @@ function deletefs(bakfs){
     <div class="box box-primary">
         <div class="box-header">
             <i class="fa fa-database"></i>
-            <h3 class="box-title">数据库备份管理</h3>
+            <h3 class="box-title">การบริหารจัดการการสำรองฐานข้อมูล</h3>
         </div>
         <div class="box-body">
             <div class="container">
         <form id="query_form" class="form-horizontal form-well" role="form" action="/ops/opslog" method="post">
             <div class="form-group">
-                <label for="backup_path" class="col-md-4 control-label">备份目录</label>
+                <label for="backup_path" class="col-md-4 control-label">ไดเรกทอรีสำรอง</label>
                 <div class="col-md-4">
                     <input type="text" id="backup_path" name="backup_path" class="form-control" value="${backup_path}" readonly="readonly">
                 </div>           
                 <div class="col-md-4">
                     % if permit.match(current_user.username,'/admin/backup/dump'):
-                    <button type="button" onclick="dumpdb();" class="btn btn-primary">立即备份</button>
+                    <button type="button" onclick="dumpdb();" class="btn btn-primary">สำรองข้อมูล</button>
                     % endif
                 </div>
 
@@ -87,8 +87,8 @@ function deletefs(bakfs){
         <table class="table table-hover">
             <thead>
             <tr>
-                <th width="60%">备份名称</th>
-                <th width="40%">操作</th>
+                <th width="60%">ชื่อ</th>
+                <th width="40%"></th>
             </tr>
             </thead>
             <tbody>
@@ -97,11 +97,11 @@ function deletefs(bakfs){
                 <td>${backup}</td>
                 <td>
                     % if permit.match(current_user.username,'/admin/backup/delete'):
-                    <a href="javascript:deletefs('${backup}')">删除</a>
+                    <a href="javascript:deletefs('${backup}')">Delete</a>
                     % endif |
-                    <a href="/admin/backup/download/${backup}">下载</a> |
+                    <a href="/admin/backup/download/${backup}">Download</a> |
                     % if permit.match(current_user.username,'/admin/backup/restore'):
-                    <a href="javascript:restoredb('${backup}')">恢复</a>
+                    <a href="javascript:restoredb('${backup}')">Restore</a>
                     % endif
                 </td>
             </tr>

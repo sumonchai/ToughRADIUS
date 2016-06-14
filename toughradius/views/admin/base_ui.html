@@ -12,10 +12,10 @@
 
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/about">关于</a></li>
-            <li><a href="/admin/dashboard">控制面板</a></li>
-            <li><a href="/admin/password">修改密码</a></li>
-            <li><a href="/admin/logout">退出</a></li>
+            <li><a href="/about">เกี่ยวกับ</a></li>
+            <li><a href="/admin/dashboard">dashboard</a></li>
+            <li><a href="/admin/password">password</a></li>
+            <li><a href="/admin/logout">logout</a></li>
         </ul>
     </div>
 </nav>
@@ -41,7 +41,7 @@ def aclass(req,path):
     <!-- Sidebar user panel -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-        <li class="header">功能导航</li>
+        <li class="header">แผงควบคุม</li>
         % for menu in all_menus:
         % if permit.check_opr_category(current_user.username,menu['category']):
         <li class="treeview ${inactive(request,menu)}">

@@ -1,0 +1,11 @@
+
+front:
+  build: ./build/dev-eng
+  ports:
+    - "1816:1816"
+    #- "443:443"
+    #- "9000:9000"
+  volumes:
+    - ../toughradius:/opt/toughradius
+    #- ./sites-available:/etc/nginx/conf.d
+    - ./logs:/var/toughradius

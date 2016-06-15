@@ -33,9 +33,9 @@ function busy(flag) {
 var msgstat_options = {
     credits : {enabled:false},
     chart: {type: 'areaspline',renderTo: 'msgstat-chart',height:300},
-    title: {text: '最近15分钟的消息统计'},
+    title: {text: '15 นาทีสถิติ'},
     xAxis: {type: 'datetime',tickInterval : 60*1000},
-    yAxis: {title: {text: '消息量'},
+    yAxis: {title: {text: 'ปริมาณข้อความ'},
         labels: {formatter: function() {return this.value;}}              
     },
     tooltip: {shared: true},
@@ -64,10 +64,10 @@ function updateMsgChart(data){
     for (p in data){
         $("#"+p).html(data[p])
     }
-    var auth_req_stat = {name:'认证请求消息',data:data.auth_req_stat};
-    var auth_resp_stat = {name:'认证响应消息',data:data.auth_resp_stat};
-    var acct_req_stat = {name:'计费请求消息',data:data.acct_req_stat};
-    var acct_resp_stat = {name:'计费响应消息',data:data.acct_resp_stat};
+    var auth_req_stat = {name:'ข้อความคำขอรับรองความถูกต้อง',data:data.auth_req_stat};
+    var auth_resp_stat = {name:'ข้อความตอบกลับรับรองความถูกต้อง',data:data.auth_resp_stat};
+    var acct_req_stat = {name:'ชาร์จข้อความคำขอ',data:data.acct_req_stat};
+    var acct_resp_stat = {name:'ชาร์จข้อความตอบกลับ',data:data.acct_resp_stat};
     msgstat_chart.series[0].update(auth_req_stat) ;
     msgstat_chart.series[1].update(auth_resp_stat) ;
     msgstat_chart.series[2].update(acct_req_stat) ;
@@ -103,11 +103,11 @@ function update() {
 var online_options = {
     credits : {enabled:false},
     chart: {type: 'areaspline',renderTo: 'online-chart',height:300},
-    title: {text: '在线用户统计'},
+    title: {text: 'สถิติผู้ใช้งานออนไลน์'},
     subtitle: {text: '${"%s 00:00:00 -- %s 23:59:59"%(utils.get_currdate(),utils.get_currdate())}'},
     xAxis: {type: 'datetime',tickInterval : 3600*1000},
     yAxis: {
-        title: {text: '在线数'},
+        title: {text: 'ออนไลน์'},
         labels: {formatter: function() {return this.value + '人';}}            
     },
     tooltip: {shared: true},
@@ -134,10 +134,10 @@ function update_online()
 var flow_options = {
     credits : {enabled:false},
     chart: {type: 'areaspline',renderTo: 'flow-chart',height:300},
-    title: {text: '流量统计'},
+    title: {text: 'สถิติการเข้าชม'},
     subtitle: {text: '${"%s 00:00:00 -- %s 23:59:59"%(utils.get_currdate(),utils.get_currdate())}'},
     xAxis: {type: 'datetime',tickInterval : 3600*1000},
-    yAxis: {title: {text: '使用流量'},
+    yAxis: {title: {text: 'ใช้การจราจร'},
         labels: {format:'{value:.2f}',formatter: function() {return this.value + 'MB';}}            
     },
     tooltip: {shared: true, valueSuffix: 'MB'},
@@ -218,65 +218,65 @@ $(document).ready(function () {
     <div class="box box-primary">
         <div class="box-header">
             <i class="fa fa-dashboard"></i>
-            <h3 class="box-title">控制面板</h3>
+            <h3 class="box-title">แผงควบคุม</h3>
         </div>
         <div class="box-body">
             <div class="container">
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th colspan="4"> <i class="fa fa-user"></i> 当前登录管理员</th>
+                    <th colspan="4"> <i class="fa fa-user"></i> ผู้ดูแลระบบ</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>登录管理员</td>
+                    <td>ผู้ดูแลระบบ</td>
                     <td>${current_user.username}</td>
-                    <td>登录时间</td>
+                    <td>เข้าสู่ระบบเวลา</td>
                     <td>${current_user.login_time}</td>
                 </tr>
                 <tr>
-                    <td colspan="2">登录IP地址</td>
+                    <td colspan="2">IP เข้าสู่ระบบ</td>
                     <td>${current_user.ipaddr or ''}</td>
                 </tr>
                 </tbody>
                 <thead>
                 <tr>
-                    <th colspan="4"> <i class="fa fa-laptop"></i> 系统状态信息</th>
+                    <th colspan="4"> <i class="fa fa-laptop"></i> สถานะของระบบ</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>系统版本</td>
+                    <td>เวอร์ชัน</td>
                     <td>${sys_version or '1.0'}</td>
                     <td>SID</td>
                     <td>${sys_uuid}</td>
                 </tr>
                 <tr>
-                    <td width=15% >cpu使用率</td>
+                    <td width=15% >cpu</td>
                     <td width=35% class="break-all">${'; '.join([ 'cpu%s: %s/%%'%(cpuuse.index(c),c)  for c in cpuuse])}</td>
-                    <td width=15% >内存使用率</td>
+                    <td width=15% >หน่วยความจำ</td>
                     <td width=35% >${memuse.percent}% ;  ${int((memuse.total-memuse.available)/1024.0/1024.0)}MB / ${int(memuse.total/1024.0/1024.0)}MB</td>                    
                 </tr>
                 <tr>
-                    <td>磁盘使用率</td>
+                    <td>ใช้งานดิสก์</td>
                     <td colspan="3">${diskuse}</td>
                 </tr>
                 </tbody>
                 <thead>
                 <tr>
-                    <th colspan="4"> <i class="fa fa-hdd-o"></i>  缓存信息 </th>
+                    <th colspan="4"> <i class="fa fa-hdd-o"></i>  แคช </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>缓存总数</td>
+                    <td>Cache</td>
                     <td>${handler.cache.count()} </td>
-                    <td>缓存命中率</td>
+                    <td>hit rate Cache</td>
                     <td>${cache_rate()} %  </td>
                 </tr>      
                 <tr>
-                    <td>系统消息缓存列表数</td>
+                    <td>จำนวน Cache ระบบ</td>
                     <td>${handler.logtrace.count()} </td>
                     <td></td>
                     <td></td>
@@ -284,8 +284,8 @@ $(document).ready(function () {
                 % if current_user.opr_type == 0:           
                 <tr>
                     <td colspan="4">
-                    <a href="javascript:clean_cache();" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i> 刷新系统缓存</a> 
-                    <a href="javascript:clean_trace();" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i> 刷新系统消息缓存</a>
+                    <a href="javascript:clean_cache();" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i> รีเฟรช Cacheระบบ</a>
+                    <a href="javascript:clean_trace();" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i> รีเฟรช Cache ข้อความ</a>
                     </td>
                 </tr>
                 % endif
@@ -307,7 +307,7 @@ $(document).ready(function () {
     <div class="box box-default">
         <div class="box-header">
             <i class="fa fa-area-chart"></i>
-            <h3 class="box-title">消息统计</h3>
+            <h3 class="box-title">สถิติข้อความ</h3>
             <div class="bar pull-right">
                 <a href="javascript:updateMsgStat();">刷新数据</a>
             </div>

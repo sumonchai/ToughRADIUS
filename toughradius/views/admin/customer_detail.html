@@ -50,8 +50,8 @@ function do_delete(customer_id)
     <div class="box box-primary">
         <div class="box-header">
             <i class="fa fa-user"></i>
-            <h3 class="box-title">用户受理</h3>
-            <div class="bar pull-right"><a href="javascript:history.go(-1);">返回</a></div>
+            <h3 class="box-title">ผู้ใช้ยอมรับ</h3>
+            <div class="bar pull-right"><a href="javascript:history.go(-1);">Back</a></div>
         </div>
         <div class="box-body">
             <div class="container">
@@ -71,11 +71,11 @@ function do_delete(customer_id)
                 % endif
 
                 % if permit.match(current_user.username,'/admin/account/update'):
-                <a class="btn btn-sm btn-info" href="/admin/account/update?account_number=${user.account_number}">修改策略</a>
+                <a class="btn btn-sm btn-info" href="/admin/account/update?account_number=${user.account_number}">ปรับเปลี่ยนนโยบาย</a>
                 % endif
 
                 % if permit.match(current_user.username,'/admin/account/release'):
-                <a class="btn btn-sm btn-info" href="javascript:release('${user.account_number}');">释放绑定</a>
+                <a class="btn btn-sm btn-info" href="javascript:release('${user.account_number}');">ผูกที่วางจำหน่าย</a>
                 % endif
             
                 % if permit.match(current_user.username,'/admin/account/change'):
@@ -159,7 +159,7 @@ function do_delete(customer_id)
         <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="6"> 认证信息</th>
+                        <th colspan="6"> ข้อมูลการตรวจสอบ</th>
                     </tr>
                 </thead>
                 <tbody>
